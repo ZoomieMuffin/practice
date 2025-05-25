@@ -1,0 +1,23 @@
+name: 📋 Task
+description: 通常のタスク用テンプレート
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 説明
+      description: このタスクの詳細を記入
+      placeholder: 何をするタスクですか？
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      options:
+        - Low
+        - Medium
+        - High
+    validations:
+      required: true

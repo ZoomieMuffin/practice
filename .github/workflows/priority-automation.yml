@@ -1,0 +1,27 @@
+name: Priority Based Automation
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  prioritize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: High priority issues
+        if: contains(github.event.issue.labels.*.name, 'High')
+        run: |
+          echo "🚨 高優先度のタスクが作成されました！"
+          # ここにSlack通知などを追加可能
+          
+      - name: Add priority label
+        if: contains(github.event.issue.title, '[BUG]')
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['priority-high']
+            });
