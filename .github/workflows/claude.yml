@@ -34,3 +34,18 @@ jobs:
       with:
         claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    # Slack通知ステップ
+    - name: Notify Slack on success
+      if: success()
+      run: |
+        curl -X POST -H "Content-type: application/json" \
+          --data '{"text":"✅ ずんだもん:Claude Code Actionが成功したのだ！！"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+          
+    - name: Notify Slack on failure  
+      if: failure()
+      run: |
+        curl -X POST -H "Content-type: application/json" \
+          --data '{"text":"❌ ずんだもん:Claude Code Actionが失敗したのだ..."}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
