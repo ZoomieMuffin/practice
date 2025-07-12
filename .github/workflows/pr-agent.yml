@@ -29,6 +29,8 @@ jobs:
       env:
         OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # モデル明示指定
+        CONFIG__MODEL: "gpt-4.1-mini"
         # オプション設定
         PR_REVIEWER.REQUIRE_TESTS_REVIEW: "false"
         PR_CODE_SUGGESTIONS.NUM_CODE_SUGGESTIONS: 6
