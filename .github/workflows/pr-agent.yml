@@ -28,7 +28,7 @@ jobs:
       uses: qodo-ai/pr-agent@main
       env:
         OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN 
         # モデル明示指定
         CONFIG__MODEL: "gpt-4.1-mini"
         # オプション設定
